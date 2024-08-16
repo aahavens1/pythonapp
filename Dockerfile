@@ -16,7 +16,5 @@ COPY . /app
 # Install another package
 RUN pip3 install -r requirements.txt --break-system-packages
 
-Expose 8080
-
 # Run the app
 CMD ["python3", "main.py"]
