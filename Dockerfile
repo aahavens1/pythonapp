@@ -1,7 +1,7 @@
-# Use the official Ubuntu image as a base
+# Use an Ubuntu image
 FROM ubuntu:latest
 
-# Update package lists and install necessary packages
+# Update packages
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
@@ -10,11 +10,13 @@ RUN apt-get update && apt-get install -y \
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the entire current directory into the container at /app
+# Copy the current directory
 COPY . /app
 
-# Install pyxtermjs
+# Install another package
 RUN pip3 install -r requirements.txt --break-system-packages
 
-# Run the pyxtermjs command when the container starts
+Expose 8080
+
+# Run the app
 CMD ["python3", "main.py"]
